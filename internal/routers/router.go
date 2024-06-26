@@ -40,6 +40,7 @@ func SetupRouter() *gin.Engine {
 	{
 		v1.POST("/users", userAPI.Register)
 		v1.GET("/users/:id", userAPI.GetByID)
+		v1.GET("/users", userAPI.GetAll)
 
 		v1.GET("/plans", planAPI.GetAll)
 		v1.GET("/plans/:id", planAPI.GetByID)

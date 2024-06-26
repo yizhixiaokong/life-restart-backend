@@ -25,3 +25,7 @@ func (s *UserService) RegisterUser(ctx context.Context, user *models.User) (prim
 func (s *UserService) GetUserByID(ctx context.Context, id primitive.ObjectID) (*models.User, error) {
 	return s.userDAO.GetUserByID(ctx, id)
 }
+
+func (s *UserService) GetAllUsers(ctx context.Context) ([]models.User, error) {
+	return s.userDAO.GetAllUsers(ctx)
+}

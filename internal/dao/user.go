@@ -42,3 +42,13 @@ func (dao *UserDAO) GetUserByID(ctx context.Context, id primitive.ObjectID) (*mo
 	}
 	return &user, nil
 }
+
+func (dao *UserDAO) GetAllUsers(ctx context.Context) ([]models.User, error) {
+	var users []models.User
+	err := dao.collection.Find(ctx, bson.M{}).All(&users)
+	if err != nil {
+		log.Printf("Failed to get all users: %v", err)
+		return nil, err
+	}
+	return users, nil
+}
