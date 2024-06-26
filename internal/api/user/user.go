@@ -51,3 +51,13 @@ func (api *Handler) GetByID(c *gin.Context) {
 
 	c.JSON(http.StatusOK, user)
 }
+
+func (api *Handler) GetAll(c *gin.Context) {
+	users, err := api.userSrv.GetAllUsers(c)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get all users"})
+		return
+	}
+
+	c.JSON(http.StatusOK, users)
+}
