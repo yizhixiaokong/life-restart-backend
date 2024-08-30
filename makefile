@@ -23,7 +23,7 @@ image:
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) .
 
 # Docker save command
-save:
+docker-save:
 	docker save -o $(PROJECT_NAME)_$(IMAGE_TAG).tar $(IMAGE_NAME):$(IMAGE_TAG)
 
 # Docker push command
@@ -34,4 +34,7 @@ push-latest:
 	docker tag $(IMAGE_NAME):$(IMAGE_TAG) $(IMAGE_NAME):latest
 	docker push $(IMAGE_NAME):latest
 
-.PHONY: all image save push push-latest
+local:
+	go run ./cmd
+
+.PHONY: all image docker-save push push-latest local
